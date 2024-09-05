@@ -37,6 +37,11 @@ export const create = mutation({
       role: "admin",
     });
 
+    await ctx.db.insert("channels", {
+      name: "general",
+      workspaceId,
+    });
+
     return workspaceId;
   },
 });
@@ -82,7 +87,7 @@ export const getById = query({
 
     const member = await ctx.db
       .query("members")
-      .withIndex("by_workpsace_id_user_id", (q) =>
+      .withIndex("by_workspace_id_user_id", (q) =>
         q.eq("workspaceId", args.id).eq("userId", userId)
       )
       .unique();
@@ -109,7 +114,7 @@ export const update = mutation({
 
     const member = await ctx.db
       .query("members")
-      .withIndex("by_workpsace_id_user_id", (q) =>
+      .withIndex("by_workspace_id_user_id", (q) =>
         q.eq("workspaceId", args.id).eq("userId", userId)
       )
       .unique();
@@ -139,7 +144,7 @@ export const remove = mutation({
 
     const member = await ctx.db
       .query("members")
-      .withIndex("by_workpsace_id_user_id", (q) =>
+      .withIndex("by_workspace_id_user_id", (q) =>
         q.eq("workspaceId", args.id).eq("userId", userId)
       )
       .unique();
@@ -151,7 +156,7 @@ export const remove = mutation({
     const [members] = await Promise.all([
       ctx.db
         .query("members")
-        .withIndex("by_workpsace_id", (q) => q.eq("workspaceId", args.id))
+        .withIndex("by_workspace_id", (q) => q.eq("workspaceId", args.id))
         .collect(),
     ]);
 
