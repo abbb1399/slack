@@ -21,7 +21,7 @@ const userItemVariants = cva(
   }
 );
 
-interface UserItemPRops {
+interface UserItemProps {
   id: Id<"members">;
   label?: string;
   image?: string;
@@ -33,7 +33,7 @@ export const UserItem = ({
   label = "Member",
   image,
   variant,
-}: UserItemPRops) => {
+}: UserItemProps) => {
   const workspaceId = useWorkspaceId();
   const avatarFallback = label.charAt(0).toUpperCase();
 
