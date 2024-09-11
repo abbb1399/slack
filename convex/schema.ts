@@ -27,7 +27,7 @@ const schema = defineSchema({
     memberId: v.id("members"),
     workspaceId: v.id("workspaces"),
     channelId: v.optional(v.id("channels")),
-    parentMessageID: v.optional(v.id("messages")),
+    parentMessageId: v.optional(v.id("messages")),
     updatedAt: v.number(),
   }),
 });
