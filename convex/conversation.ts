@@ -37,8 +37,8 @@ export const createOrGet = mutation({
             q.eq(q.field("memberTwoId"), otherMember._id)
           ),
           q.and(
-            q.eq(q.field("memberTwoId"), otherMember._id),
-            q.eq(q.field("memberOneId"), currentMember._id)
+            q.eq(q.field("memberOneId"), otherMember._id),
+            q.eq(q.field("memberTwoId"), currentMember._id)
           )
         )
       )
